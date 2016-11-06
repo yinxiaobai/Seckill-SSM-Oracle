@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.seckill.dao.SeckillDao">
+	<!-- 目的：为DAO接口方法提供sql语句配置 -->
+	<update id="reduceNum">
+		<!-- 具体sql语句 -->
+		update 
+			seckill 
+		set
+			num = num - 1
+		where seckill_id = #{seckillId}
+		and start_time &lt;= #{killTime}  <!-- <![CDATA[ ]]> -->
+		and end_time <![CDATA[ >= ]]> #{killTime}
+		and num &gt; 0
+		<!-- 
+			转义字符 
+			&gt;	对应		大于号> 
+			&lt;	对应		小于号<
+		-->
+	</update>
+	
+	<select id="queryById" resultType="Seckill" parameterType="long">
+		select seckill_id,name,num,start_time,end_time,create_time
+		from seckill
+		where seckill_id = #{seckillId}		<!-- 结尾千万不要加分号（;） ！！！(视频上有加，不要问我为什么，已吐血)-->
+	</select>
+	
+	<select id="queryAll" resultType="Seckill">
+	select seckill_id,name,num,start_time,end_time,create_time,n from (
+		select seckill_id,name,num,start_time,end_time,create_time,rownum n from(
+			select seckill_id,name,num,start_time,end_time,create_time
+			from seckill
+			order by create_time desc)
+	)where n &gt;= #{start} and n &lt;= #{end}
+	</select>
+</mapper>
