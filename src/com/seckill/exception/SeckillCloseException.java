@@ -2,7 +2,7 @@ package com.seckill.exception;
 
 /**
  * @author xiaobai
- * @date 2016Äê11ÔÂ6ÈÕÏÂÎç6:11:11
+ * @date 2016å¹´11æœˆ6æ—¥ä¸‹åˆ6:11:11
  */
 @SuppressWarnings("serial")
 public class SeckillCloseException extends SeckillException{
@@ -14,5 +14,4 @@ public class SeckillCloseException extends SeckillException{
 	public SeckillCloseException(String message, Throwable cause) {
 		super(message, cause);
 	}
-	
 }

@@ -3,9 +3,9 @@ package com.seckill.entity;
 import java.util.Date;
 
 /**
- * ÃëÉ±³É¹¦ĞÅÏ¢
+ * ç§’æ€æˆåŠŸä¿¡æ¯
  * @author xiaobai
- * @date 2016Äê11ÔÂ5ÈÕÏÂÎç6:23:47
+ * @date 2016å¹´11æœˆ5æ—¥ä¸‹åˆ6:23:47
  */
 public class SuccessKilled {
 	
@@ -17,8 +17,8 @@ public class SuccessKilled {
 	
 	private Date createTime;
 	
-	//±äÍ¨
-	//¶à¶ÔÒ»
+	//å˜é€š
+	//å¤šå¯¹ä¸€
 	private Seckill seckill;
 	
 

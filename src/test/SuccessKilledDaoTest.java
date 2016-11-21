@@ -12,7 +12,7 @@ import com.seckill.entity.SuccessKilled;
 
 /**
  * @author xiaobai
- * @date 2016Äê11ÔÂ6ÈÕÏÂÎç4:20:59
+ * @date 2016å¹´11æœˆ6æ—¥ä¸‹åˆ4:20:59
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration({"classpath:spring/spring-dao.xml"})
@@ -22,9 +22,9 @@ public class SuccessKilledDaoTest {
 	private SuccessKilledDao dao;
 	
 	/**
-	 * seckillIdÓëuserPhone¾ùÏàÍ¬Ê±²Å»áÎ¥·´Î¨Ò»Ô¼ÊøÌõ¼ş
+	 * seckillIdä¸userPhoneå‡ç›¸åŒæ—¶æ‰ä¼šè¿åå”¯ä¸€çº¦æŸæ¡ä»¶
 	 * @author xiaobai
-	 * @date 2016Äê11ÔÂ6ÈÕÏÂÎç5:27:34
+	 * @date 2016å¹´11æœˆ6æ—¥ä¸‹åˆ5:27:34
 	 */
 	@Test
 	public void testInsertSuccessKilled() throws Exception{

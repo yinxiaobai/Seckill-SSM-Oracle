@@ -1,16 +1,16 @@
 package com.seckill.enums;
 
 /**
- * Ê¹ÓÃÃ¶¾Ù±íÊö³£Á¿Êı¾İ×Ö¶Î
+ * ä½¿ç”¨æšä¸¾è¡¨è¿°å¸¸é‡æ•°æ®å­—æ®µ
  * @author xiaobai
- * @date 2016Äê11ÔÂ6ÈÕÏÂÎç7:56:02
+ * @date 2016å¹´11æœˆ6æ—¥ä¸‹åˆ7:56:02
  */
 public enum SeckillStatEnum {
-	SUCCESS(1,"ÃëÉ±³É¹¦"),
-	END(0,"ÃëÉ±½áÊø"),
-	REPEAT_KILL(-1,"ÖØ¸´ÃëÉ±"),
-	INNER_ERROR(-2,"ÏµÍ³Òì³£"),
-	DATA_REWRITE(-3,"Êı¾İ´Û¸Ä");
+	SUCCESS(1,"ç§’æ€æˆåŠŸ"),
+	END(0,"ç§’æ€ç»“æŸ"),
+	REPEAT_KILL(-1,"é‡å¤ç§’æ€"),
+	INNER_ERROR(-2,"ç³»ç»Ÿå¼‚å¸¸"),
+	DATA_REWRITE(-3,"æ•°æ®ç¯¡æ”¹");
 	
 	private int state;
 	

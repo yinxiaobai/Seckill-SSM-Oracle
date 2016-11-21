@@ -5,26 +5,26 @@ import org.apache.ibatis.annotations.Param;
 import com.seckill.entity.SuccessKilled;
 
 /**
- * DAO²ã Êı¾İ·ÃÎÊ²ã
+ * DAOå±‚ æ•°æ®è®¿é—®å±‚
  * @author xiaobai
- * @date 2016Äê11ÔÂ5ÈÕÏÂÎç6:43:49
+ * @date 2016å¹´11æœˆ5æ—¥ä¸‹åˆ6:43:49
  */
 public interface SuccessKilledDao {
 	
 	/**
-	 * ²åÈë¹ºÂòÃ÷Ï¸£¬¿É¹ıÂËÖØ¸´
+	 * æ’å…¥è´­ä¹°æ˜ç»†ï¼Œå¯è¿‡æ»¤é‡å¤
 	 * @author xiaobai
-	 * @date 2016Äê11ÔÂ5ÈÕÏÂÎç6:44:30
+	 * @date 2016å¹´11æœˆ5æ—¥ä¸‹åˆ6:44:30
 	 * @param seckillId
 	 * @param userPhone
-	 * @return ²åÈëµÄĞĞÊı
+	 * @return æ’å…¥çš„è¡Œæ•°
 	 */
 	int insertSuccessKilled(@Param("seckillId")long seckillId,@Param("userPhone")long userPhone);
 	
 	/**
-	 * ¸ù¾İID²éÑ¯SuccessKilled²¢Ğ¯´øÃëÉ±²úÆ·¶ÔÏóÊµÌå
+	 * æ ¹æ®IDæŸ¥è¯¢SuccessKilledå¹¶æºå¸¦ç§’æ€äº§å“å¯¹è±¡å®ä½“
 	 * @author xiaobai
-	 * @date 2016Äê11ÔÂ5ÈÕÏÂÎç6:45:37
+	 * @date 2016å¹´11æœˆ5æ—¥ä¸‹åˆ6:45:37
 	 * @param seckillId
 	 * @return
 	 */

@@ -25,11 +25,11 @@ import com.seckill.service.SeckillService;
 
 /**
  * @author xiaobai
- * @date 2016Äê11ÔÂ13ÈÕÏÂÎç11:26:52
+ * @date 2016å¹´11æœˆ13æ—¥ä¸‹åˆ11:26:52
  */
 @Controller
 @RequestMapping("/seckill")
-// url:Ä£¿é/×ÊÔ´{id}/Ï¸·Ö seckill/list
+// url:æ¨¡å—/èµ„æº{id}/ç»†åˆ† seckill/list
 public class SeckillController {
 
 	private final Logger log = LoggerFactory.getLogger(this.getClass());
@@ -39,11 +39,11 @@ public class SeckillController {
 
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
 	public String list(Model model) {
-		// »ñÈ¡ÁĞ±íÒ³
+		// è·å–åˆ—è¡¨é¡µ
 		List<Seckill> list = seckillService.getSeckillList();
 		model.addAttribute("list", list);
 		// list.jsp + model = ModelAndView
-		log.info("»ñÈ¡ÁĞ±íÒ³:" + list);
+		log.info("è·å–åˆ—è¡¨é¡µ:" + list);
 		return "list";// WEB-INF/"list".jsp
 	}
 
@@ -58,7 +58,7 @@ public class SeckillController {
 			return "forward:/seckill/list";
 		}
 		model.addAttribute("seckill", seckill);
-		log.info("¸ù¾İID:" + seckillId + "²éµÃÃëÉ±ÏêÏ¸ĞÅÏ¢£º" + seckill.toString());
+		log.info("æ ¹æ®ID:" + seckillId + "æŸ¥å¾—ç§’æ€è¯¦ç»†ä¿¡æ¯ï¼š" + seckill.toString());
 		return "detail";
 	}
 
@@ -82,9 +82,9 @@ public class SeckillController {
 	public SeckillResult<SeckillExecution> exectue(Long seckillId,
 			@PathVariable("md5") String md5,
 			@CookieValue(value = "killPhone", required = false) Long phone) {
-		// springmvc valid ÑéÖ¤
+		// springmvc valid éªŒè¯
 		if (phone == null) {
-			return new SeckillResult<SeckillExecution>(false, "Îª×¢²á");
+			return new SeckillResult<SeckillExecution>(false, "æœªæ³¨å†Œ");
 		}
 
 		try {

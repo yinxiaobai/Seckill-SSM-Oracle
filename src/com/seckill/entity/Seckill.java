@@ -4,7 +4,7 @@ import java.util.Date;
 
 /**
  * @author xiaobai
- * @date 2016Äê11ÔÂ5ÈÕÏÂÎç6:21:24
+ * @date 2016å¹´11æœˆ5æ—¥ä¸‹åˆ6:21:24
  */
 public class Seckill {
 	

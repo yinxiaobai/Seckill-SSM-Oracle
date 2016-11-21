@@ -4,22 +4,22 @@ import com.seckill.entity.SuccessKilled;
 import com.seckill.enums.SeckillStatEnum;
 
 /**
- * ·â×°ÃëÉ±Ö´ĞĞºó½á¹û
+ * å°è£…ç§’æ€æ‰§è¡Œåç»“æœ
  * @author xiaobai
- * @date 2016Äê11ÔÂ6ÈÕÏÂÎç6:01:43
+ * @date 2016å¹´11æœˆ6æ—¥ä¸‹åˆ6:01:43
  */
 public class SeckillExecution {
 	
 	//id
 	private long seckillId;
 	
-	//ÃëÉ±Ö´ĞĞ×´Ì¬
+	//ç§’æ€æ‰§è¡ŒçŠ¶æ€
 	private int state;
 	
-	//×´Ì¬±íÊ¾
+	//çŠ¶æ€è¡¨ç¤º
 	private String stateInfo;
 	
-	//ÃëÉ±³É¹¦¶ÔÏó
+	//ç§’æ€æˆåŠŸå¯¹è±¡
 	private SuccessKilled successKilled;
 
 	public long getSeckillId() {

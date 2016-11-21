@@ -8,37 +8,37 @@ import org.apache.ibatis.annotations.Param;
 import com.seckill.entity.Seckill;
 
 /**
- * DAO²ã Êı¾İ·ÃÎÊ²ã
+ * DAOå±‚ æ•°æ®è®¿é—®å±‚
  * @author xiaobai
- * @date 2016Äê11ÔÂ5ÈÕÏÂÎç6:38:51
+ * @date 2016å¹´11æœˆ5æ—¥ä¸‹åˆ6:38:51
  */
 public interface SeckillDao {
 	/**
-	 * ¼õ¿â´æ
+	 * å‡åº“å­˜
 	 * @author xiaobai
-	 * @date 2016Äê11ÔÂ5ÈÕÏÂÎç6:40:05
+	 * @date 2016å¹´11æœˆ5æ—¥ä¸‹åˆ6:40:05
 	 * @param seckillId
 	 * @param killTime
-	 * @return Èç¹ûÓ°ÏìĞĞÊı>1£¬±íÊ¾¸üĞÂµÄ¼ÇÂ¼ĞĞÊı
+	 * @return å¦‚æœå½±å“è¡Œæ•°>1ï¼Œè¡¨ç¤ºæ›´æ–°çš„è®°å½•è¡Œæ•°
 	 */
-	//´«Èë¶à¸ö²ÎÊıÊ±Ğè¼ÓÉÏ@Param×¢½â
+	//ä¼ å…¥å¤šä¸ªå‚æ•°æ—¶éœ€åŠ ä¸Š@Paramæ³¨è§£
 	int reduceNum(@Param("seckillId")long seckillId,@Param("killTime") Date killTime);
 	
 	/**
-	 * ¸ù¾İID²éÑ¯ÃëÉ±¶ÔÏó
+	 * æ ¹æ®IDæŸ¥è¯¢ç§’æ€å¯¹è±¡
 	 * @author xiaobai
-	 * @date 2016Äê11ÔÂ5ÈÕÏÂÎç6:40:56
+	 * @date 2016å¹´11æœˆ5æ—¥ä¸‹åˆ6:40:56
 	 * @param seckillId
 	 * @return
 	 */
 	Seckill queryById(long seckillId);
 	
 	/**
-	 * ·ÖÒ³²éÑ¯ÃëÉ±ÁĞ±í
+	 * åˆ†é¡µæŸ¥è¯¢ç§’æ€åˆ—è¡¨
 	 * @author xiaobai
-	 * @date 2016Äê11ÔÂ5ÈÕÏÂÎç6:42:50
-	 * @param start	²éÑ¯ÆğÊ¼ÌõÊı
-	 * @param end	²éÑ¯ÖÕÖ¹ÌõÊı
+	 * @date 2016å¹´11æœˆ5æ—¥ä¸‹åˆ6:42:50
+	 * @param start	æŸ¥è¯¢èµ·å§‹æ¡æ•°
+	 * @param end	æŸ¥è¯¢ç»ˆæ­¢æ¡æ•°
 	 * @return
 	 */
 	List<Seckill> queryAll(@Param("start") int start,@Param("end")int end);

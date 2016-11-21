@@ -15,19 +15,19 @@ import com.seckill.entity.Seckill;
 
 /**
  * @author xiaobai
- * @date 2016Äê11ÔÂ6ÈÕÉÏÎç12:06:28
+ * @date 2016å¹´11æœˆ6æ—¥ä¸Šåˆ12:06:28
  */
 /**
- * ÅäÖÃspringºÍjunitÕûºÏ£¬junitÆô¶¯Ê±¼ÓÔØspringIOCÈİÆ÷
+ * é…ç½®springå’Œjunitæ•´åˆï¼Œjunitå¯åŠ¨æ—¶åŠ è½½springIOCå®¹å™¨
  * spring-test,junit
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-//¸æËßjunit springÅäÖÃÎÄ¼ş
+//å‘Šè¯‰junit springé…ç½®æ–‡ä»¶
 @ContextConfiguration({"classpath:spring/spring-dao.xml"})
 public class SeckillDaoTest {
 	
-	//×¢ÈëDAOÊµÏÖÀàÒÀÀµ
-	@Resource//j2ee×Ô´øµÄ×¢½â£¬ÓëspringÖĞ@Autowired×¢½âÀàĞÍ
+	//æ³¨å…¥DAOå®ç°ç±»ä¾èµ–
+	@Resource//j2eeè‡ªå¸¦çš„æ³¨è§£ï¼Œä¸springä¸­@Autowiredæ³¨è§£ç±»å‹
 	private SeckillDao seckilldao;
 	
 	@Test
@@ -40,7 +40,7 @@ public class SeckillDaoTest {
 	
 	@Test
 	public void testQueryAll() throws Exception{
-		//javaÃ»ÓĞ±£´æĞÎ²ÎµÄ¼ÇÂ¼
+		//javaæ²¡æœ‰ä¿å­˜å½¢å‚çš„è®°å½•
 		List<Seckill> list = seckilldao.queryAll(1, 4);
 		for(Seckill a : list){
 			System.out.println(a);

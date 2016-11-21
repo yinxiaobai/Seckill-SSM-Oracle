@@ -1,9 +1,9 @@
 package com.seckill.exception;
 
 /**
- * ÖØ¸´ÃëÉ±Òì³££¨ÔËĞĞÆÚÒì³££©
+ * é‡å¤ç§’æ€å¼‚å¸¸ï¼ˆè¿è¡ŒæœŸå¼‚å¸¸ï¼‰
  * @author xiaobai
- * @date 2016Äê11ÔÂ6ÈÕÏÂÎç6:07:19
+ * @date 2016å¹´11æœˆ6æ—¥ä¸‹åˆ6:07:19
  */
 @SuppressWarnings("serial")
 public class RepeatKillException  extends SeckillException{

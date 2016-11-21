@@ -10,49 +10,49 @@ import com.seckill.exception.SeckillCloseException;
 import com.seckill.exception.SeckillException;
 
 /**
- * ÒµÎñ½Ó¿Ú£ºÕ¾ÔÚ"Ê¹ÓÃÕß"½Ç¶ÈÉè¼Æ½Ó¿Ú
- * Èı¸ö·½Ãæ£º·½·¨¶¨ÒåÁ£¶È,²ÎÊı,·µ»ØÀàĞÍ(return ÀàĞÍ(ÓÑºÃ)/Òì³£)
+ * ä¸šåŠ¡æ¥å£ï¼šç«™åœ¨"ä½¿ç”¨è€…"è§’åº¦è®¾è®¡æ¥å£
+ * ä¸‰ä¸ªæ–¹é¢ï¼šæ–¹æ³•å®šä¹‰ç²’åº¦,å‚æ•°,è¿”å›ç±»å‹(return ç±»å‹(å‹å¥½)/å¼‚å¸¸)
  * @author xiaobai
- * @date 2016Äê11ÔÂ6ÈÕÏÂÎç5:50:36
+ * @date 2016å¹´11æœˆ6æ—¥ä¸‹åˆ5:50:36
  */
 public interface SeckillService {
 	
 	/**
-	 * ²éÑ¯ËùÓĞÃëÉ±¼ÇÂ¼
+	 * æŸ¥è¯¢æ‰€æœ‰ç§’æ€è®°å½•
 	 * @author xiaobai
-	 * @date 2016Äê11ÔÂ6ÈÕÏÂÎç5:55:12
+	 * @date 2016å¹´11æœˆ6æ—¥ä¸‹åˆ5:55:12
 	 * @return
 	 */
 	List<Seckill> getSeckillList();
 	
 	/**
-	 * ¸ù¾İid²éÑ¯ÃëÉ±¼ÇÂ¼
+	 * æ ¹æ®idæŸ¥è¯¢ç§’æ€è®°å½•
 	 * @author xiaobai
-	 * @date 2016Äê11ÔÂ6ÈÕÏÂÎç6:23:52
+	 * @date 2016å¹´11æœˆ6æ—¥ä¸‹åˆ6:23:52
 	 * @param seckillId
 	 * @return
 	 */
 	Seckill getById(long seckillId);
 	
 	/**
-	 * ÃëÉ±¿ªÆôÊ±Êä³ö½Ó¿ÚµØÖ·
-	 * ·ñÔòÊä³öÏµÍ³Ê±¼äºÍÃëÉ±Ê±¼ä
+	 * ç§’æ€å¼€å¯æ—¶è¾“å‡ºæ¥å£åœ°å€
+	 * å¦åˆ™è¾“å‡ºç³»ç»Ÿæ—¶é—´å’Œç§’æ€æ—¶é—´
 	 * @author xiaobai
-	 * @date 2016Äê11ÔÂ6ÈÕÏÂÎç5:55:48
+	 * @date 2016å¹´11æœˆ6æ—¥ä¸‹åˆ5:55:48
 	 * @param seckillId
 	 */
 	Exposer exportSeckillUrl(long seckillId);
 	
 	/**
-	 * Ö´ĞĞÃëÉ±²Ù×÷
+	 * æ‰§è¡Œç§’æ€æ“ä½œ
 	 * @author xiaobai
-	 * @date 2016Äê11ÔÂ6ÈÕÏÂÎç6:15:44
+	 * @date 2016å¹´11æœˆ6æ—¥ä¸‹åˆ6:15:44
 	 * @param seckillId
 	 * @param userPhone
 	 * @param md5
-	 * @throws SeckillCloseException	ÃëÉ±¹Ø±ÕÒì³£
-	 * @throws RepeatKillException		ÖØ¸´ÃëÉ±Òì³£
-	 * @throws SeckillException			ÃëÉ±Òì³£
+	 * @throws SeckillCloseException	ç§’æ€å…³é—­å¼‚å¸¸
+	 * @throws RepeatKillException		é‡å¤ç§’æ€å¼‚å¸¸
+	 * @throws SeckillException			ç§’æ€å¼‚å¸¸
 	 */
 	SeckillExecution executeSeckill(long seckillId,long userPhone,String md5) 
 			throws SeckillCloseException,RepeatKillException,SeckillException;

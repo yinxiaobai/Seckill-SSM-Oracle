@@ -1,9 +1,9 @@
 package com.seckill.exception;
 
 /**
- * ÃëÉ±Ïà¹ØÒì³£
+ * ç§’æ€ç›¸å…³å¼‚å¸¸
  * @author xiaobai
- * @date 2016Äê11ÔÂ6ÈÕÏÂÎç6:12:20
+ * @date 2016å¹´11æœˆ6æ—¥ä¸‹åˆ6:12:20
  */
 @SuppressWarnings("serial")
 public class SeckillException extends RuntimeException{

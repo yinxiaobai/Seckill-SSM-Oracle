@@ -1,28 +1,28 @@
 package com.seckill.dto;
 
 /**
- * ±©Â¶ÃëÉ±µØÖ·DTO
+ * æš´éœ²ç§’æ€åœ°å€DTO
  * @author xiaobai
- * @date 2016Äê11ÔÂ6ÈÕÏÂÎç5:56:50
+ * @date 2016å¹´11æœˆ6æ—¥ä¸‹åˆ5:56:50
  */
 public class Exposer {
 	
-	//ÊÇ·ñ¿ªÆôÃëÉ±
+	//æ˜¯å¦å¼€å¯ç§’æ€
 	private boolean exposed;
 	
-	//Ò»ÖÖ¼ÓÃÜ´ëÊ©
+	//ä¸€ç§åŠ å¯†æªæ–½
 	private String md5;
 	
 	//id
 	private long seckillId;
 	
-	//ÏµÍ³µ±Ç°Ê±¼ä(ºÁÃë)
+	//ç³»ç»Ÿå½“å‰æ—¶é—´(æ¯«ç§’)
 	private long now;
 	
-	//¿ªÊ¼Ê±¼ä
+	//å¼€å§‹æ—¶é—´
 	private long start;
 	
-	//½áÊøÊ±¼ä
+	//ç»“æŸæ—¶é—´
 	private long end;
 
 	public Exposer(boolean exposed, String md5, long seckillId) {

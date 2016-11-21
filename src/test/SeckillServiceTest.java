@@ -19,7 +19,7 @@ import com.seckill.service.SeckillService;
 
 /**
  * @author xiaobai
- * @date 2016Äê11ÔÂ6ÈÕÏÂÎç9:43:09
+ * @date 2016å¹´11æœˆ6æ—¥ä¸‹åˆ9:43:09
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration({
@@ -54,7 +54,7 @@ public class SeckillServiceTest {
 	/**
 	 * Test method for {@link com.seckill.service.SeckillService#exportSeckillUrl(long)}.
 	 */
-	//¼¯³É²âÊÔ´úÂëÍêÕûÂß¼­£¬×¢Òâ¿ÉÖØ¸´Ö´ĞĞ
+	//é›†æˆæµ‹è¯•ä»£ç å®Œæ•´é€»è¾‘ï¼Œæ³¨æ„å¯é‡å¤æ‰§è¡Œ
 	@Test
 	public void testSeckillLogic() {
 		int id = 3;
@@ -73,7 +73,7 @@ public class SeckillServiceTest {
 				log.error(e.getMessage());
 			}
 		}else{
-			//ÃëÉ±Î´¿ªÆô
+			//ç§’æ€æœªå¼€å¯
 			log.warn("exporser={}",exposer);
 		}
 		//Exposer [
@@ -103,8 +103,8 @@ public class SeckillServiceTest {
 		}
 		//SeckillExecution [
 		//seckillId=2, 
-		//state=1, stateInfo=ÃëÉ±³É¹¦, 
+		//state=1, stateInfo=ç§’æ€æˆåŠŸ, 
 		//successKilled=SuccessKilled 
-		//[seckillId=2, userPhone=13230941232, state=0, createTime=Sun Nov 06 22:51:33 CST 2016, seckill=SecKill [seckillId=0, name=500ÔªÃëÉ±ipad2, num=193, startTime=Sat Nov 05 00:12:00 CST 2016, endTime=Mon Nov 07 00:12:00 CST 2016, createTime=Sat Nov 05 17:59:47 CST 2016]]]
+		//[seckillId=2, userPhone=13230941232, state=0, createTime=Sun Nov 06 22:51:33 CST 2016, seckill=SecKill [seckillId=0, name=500å…ƒç§’æ€ipad2, num=193, startTime=Sat Nov 05 00:12:00 CST 2016, endTime=Mon Nov 07 00:12:00 CST 2016, createTime=Sat Nov 05 17:59:47 CST 2016]]]
 	}*/
 }

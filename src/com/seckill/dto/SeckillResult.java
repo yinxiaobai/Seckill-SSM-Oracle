@@ -2,9 +2,9 @@ package com.seckill.dto;
 
 /**
  * @author xiaobai
- * @date 2016Äê11ÔÂ16ÈÕÏÂÎç10:23:50
+ * @date 2016å¹´11æœˆ16æ—¥ä¸‹åˆ10:23:50
  */
-//·â×°JSON½á¹û
+//å°è£…JSONç»“æœ
 public class SeckillResult<T> {
 	
 	private boolean success;

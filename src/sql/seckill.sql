@@ -1,82 +1,82 @@
---´´½¨ÓÃ»§
+--åˆ›å»ºç”¨æˆ·
 create user seckill	identified by seckill;
---ÊÚÈ¨
+--æˆæƒ
 grant resource,connect,create view to seckill;
 
 
---´´½¨ÃëÉ±¿â´æ±í
+--åˆ›å»ºç§’æ€åº“å­˜è¡¨
 create table seckill(
        seckill_id  number PRIMARY KEY,
        name varchar2(120) not null,
-       num number(3) not null,					  --oracleÖĞ²»ÄÜÊ¹ÓÃ¹Ø¼ü×Önumber×öÁĞÃû£¬ÕâÀï¸ÄÎªnum
-       start_time Timestamp  not null,            --Ê±¼ä¾ùÎªtimestamp¸ñÊ½
+       num number(3) not null,					  --oracleä¸­ä¸èƒ½ä½¿ç”¨å…³é”®å­—numberåšåˆ—åï¼Œè¿™é‡Œæ”¹ä¸ºnum
+       start_time Timestamp  not null,            --æ—¶é—´å‡ä¸ºtimestampæ ¼å¼
        end_time timestamp  not null,
-       create_time timestamp default systimestamp --Ä¬ÈÏÏµÍ³Ê±¼ä´Á
+       create_time timestamp default systimestamp --é»˜è®¤ç³»ç»Ÿæ—¶é—´æˆ³
        );
---´´½¨ĞòÁĞ
+--åˆ›å»ºåºåˆ—
 create sequence seq_seckill;
---´´½¨Ë÷Òı
+--åˆ›å»ºç´¢å¼•
 create index idx_start_time on seckill(start_time);
 create index idx_end_time on seckill(end_time);
 create index idx_create_time on seckill(create_time);
---Ìí¼Ó×¢ÊÍ
-COMMENT ON TABLE seckill IS 'ÃëÉ±¿â´æ±í';
-COMMENT ON COLUMN seckill.seckill_id IS 'ÉÌÆ·¿â´æID';
-COMMENT ON COLUMN seckill.name IS 'ÉÌÆ·Ãû³Æ'; 
-COMMENT ON COLUMN seckill.num IS '¿â´æÊıÁ¿'; 
-COMMENT ON COLUMN seckill.start_time IS 'ÃëÉ±¿ªÆôÊ±¼ä'; 
-COMMENT ON COLUMN seckill.end_time IS 'ÃëÉ±½áÊøÊ±¼ä'; 
-COMMENT ON COLUMN seckill.create_time IS '´´½¨Ê±¼ä'; 
---³õÊ¼»¯Êı¾İ
---²åÈëÊ±¼äÊı¾İÊ±ÒòÖ»¾«È·µ½Ãë£¬¹Ê´ËÊ±to_dateºÍto_timestampĞ§¹ûÏàÍ¬£¬×ÔĞĞÑ¡Ôñ¾«È··¶Î§
+--æ·»åŠ æ³¨é‡Š
+COMMENT ON TABLE seckill IS 'ç§’æ€åº“å­˜è¡¨';
+COMMENT ON COLUMN seckill.seckill_id IS 'å•†å“åº“å­˜ID';
+COMMENT ON COLUMN seckill.name IS 'å•†å“åç§°'; 
+COMMENT ON COLUMN seckill.num IS 'åº“å­˜æ•°é‡'; 
+COMMENT ON COLUMN seckill.start_time IS 'ç§’æ€å¼€å¯æ—¶é—´'; 
+COMMENT ON COLUMN seckill.end_time IS 'ç§’æ€ç»“æŸæ—¶é—´'; 
+COMMENT ON COLUMN seckill.create_time IS 'åˆ›å»ºæ—¶é—´'; 
+--åˆå§‹åŒ–æ•°æ®
+--æ’å…¥æ—¶é—´æ•°æ®æ—¶å› åªç²¾ç¡®åˆ°ç§’ï¼Œæ•…æ­¤æ—¶to_dateå’Œto_timestampæ•ˆæœç›¸åŒï¼Œè‡ªè¡Œé€‰æ‹©ç²¾ç¡®èŒƒå›´
 insert into seckill
        (seckill_id,name,num,start_time,end_time)  values 
-       (seq_seckill.nextval,'1000ÔªÃëÉ±iphone6', 100, 
+       (seq_seckill.nextval,'1000å…ƒç§’æ€iphone6', 100, 
         to_date('2016-11-05 12:00:00','yyyy-mm-dd hh24:mi:ss'), to_timestamp('2016-11-06 00:00:12','yyyy-mm-dd hh24:mi:ss'));
 insert into seckill
        (seckill_id,name,num,start_time,end_time)  values 
-       (seq_seckill.nextval,'500ÔªÃëÉ±ipad2', 200, 
+       (seq_seckill.nextval,'500å…ƒç§’æ€ipad2', 200, 
         to_date('2016-11-05 00:12:00','yyyy-mm-dd hh24:mi:ss'), to_timestamp('2016-11-06 00:12:00','yyyy-mm-dd hh24:mi:ss'));
 insert into seckill
        (seckill_id,name,num,start_time,end_time)  values 
-       (seq_seckill.nextval,'300ÔªÃëÉ±Ğ¡Ã×4', 300, 
+       (seq_seckill.nextval,'300å…ƒç§’æ€å°ç±³4', 300, 
         to_date('2016-11-05 00:00:12','yyyy-mm-dd hh24:mi:ss'), to_timestamp('2016-11-06 12:00:00','yyyy-mm-dd hh24:mi:ss'));
 insert into seckill
        (seckill_id,name,num,start_time,end_time)  values 
-       (seq_seckill.nextval,'200ÔªÃëÉ±ºìÃ×note', 400,
+       (seq_seckill.nextval,'200å…ƒç§’æ€çº¢ç±³note', 400,
         to_date('2016-11-05 00:00:01','yyyy-mm-dd hh24:mi:ss'), to_timestamp('2016-11-06 00:00:12','yyyy-mm-dd hh24:mi:ss'));
---Ìá½»Êı¾İ
+--æäº¤æ•°æ®
 commit
 /*
-  ÒòoracleÊı¾İ¿âÖ±½Ó²éÑ¯timestamp¸ñÊ½Ê±ÏÔÊ¾ÎªÎ÷·½ÈÕÆÚ¸ñÊ½£¬²»·ûºÏ³£ÓÃÏ°¹ß£¬²éÑ¯Ê±¿ÉÍ¨¹ıto_char×ª»»
-  ÍøÉÏÓĞ½Ì³ÌÍ¨¹ıÔÚoracleµÄ×¢²á±íÖĞÌí¼Ó NLS_TIMESTAMP_FORMAT = YYYY-MM-DD HH24:MI:SS:FF6 
-  ×Ö·û´®±¾ÈËÁ³ºÚ£¬Î´³É¹¦-.-,ÓĞĞËÈ¤×ÔĞĞ°Ù¶È£¬³É¹¦ÁËÇë´«ÊÚÎÒÏÂ¾­Ñé
+  å› oracleæ•°æ®åº“ç›´æ¥æŸ¥è¯¢timestampæ ¼å¼æ—¶æ˜¾ç¤ºä¸ºè¥¿æ–¹æ—¥æœŸæ ¼å¼ï¼Œä¸ç¬¦åˆå¸¸ç”¨ä¹ æƒ¯ï¼ŒæŸ¥è¯¢æ—¶å¯é€šè¿‡to_charè½¬æ¢
+  ç½‘ä¸Šæœ‰æ•™ç¨‹é€šè¿‡åœ¨oracleçš„æ³¨å†Œè¡¨ä¸­æ·»åŠ  NLS_TIMESTAMP_FORMAT = YYYY-MM-DD HH24:MI:SS:FF6 
+  å­—ç¬¦ä¸²æœ¬äººè„¸é»‘ï¼ŒæœªæˆåŠŸ-.-,æœ‰å…´è¶£è‡ªè¡Œç™¾åº¦ï¼ŒæˆåŠŸäº†è¯·ä¼ æˆæˆ‘ä¸‹ç»éªŒ
 */
 select to_char(start_time,'yyyy-mm-dd hh24:mi:ss:ff6'),
        to_char(end_time,'yyyy-mm-dd hh24:mi:ss:ff6'),
        to_char(create_time,'yyyy-mm-dd hh24:mi:ss:ff6') from seckill;
 
---²éÑ¯oracleÄ¬ÈÏtimestamp´¦Àí¸ñÊ½£ºnls_timestamp_format
+--æŸ¥è¯¢oracleé»˜è®¤timestampå¤„ç†æ ¼å¼ï¼šnls_timestamp_format
 select value from nls_session_parameters where parameter = 'nls_timestamp_format'
 
 
 
---ÃëÉ±³É¹¦Ã÷Ï¸±í
---ÓÃ»§µÇÂ½ÈÏÖ¤Ïà¹ØµÄĞÅÏ¢
+--ç§’æ€æˆåŠŸæ˜ç»†è¡¨
+--ç”¨æˆ·ç™»é™†è®¤è¯ç›¸å…³çš„ä¿¡æ¯
 create table success_killed(
        seckill_id  number,
        user_phone varchar2(120) not null,
        state number(1) default -1,
        create_time timestamp default systimestamp,
-       primary  key (seckill_id,user_phone) /*ÁªºÏÖ÷¼ü*/
+       primary  key (seckill_id,user_phone) /*è”åˆä¸»é”®*/
        
 );
---Ìí¼Ó×¢ÊÍ
-COMMENT ON TABLE success_killed IS 'ÃëÉ±³É¹¦Ã÷Ï¸±í';
-COMMENT ON COLUMN success_killed.seckill_id IS 'ÃëÉ±ÉÌÆ·id';
-COMMENT ON COLUMN success_killed.user_phone IS 'ÓÃ»§ÊÖ»úºÅ';
-COMMENT ON COLUMN success_killed.state IS '×´Ì¬±êÊ¾£º-1ÎŞĞ§ 0£º³É¹¦ 1£ºÒÑ¸¶¿î 2£ºÒÑ·¢»õ';
-COMMENT ON COLUMN success_killed.create_time IS '´´½¨Ê±¼ä';
+--æ·»åŠ æ³¨é‡Š
+COMMENT ON TABLE success_killed IS 'ç§’æ€æˆåŠŸæ˜ç»†è¡¨';
+COMMENT ON COLUMN success_killed.seckill_id IS 'ç§’æ€å•†å“id';
+COMMENT ON COLUMN success_killed.user_phone IS 'ç”¨æˆ·æ‰‹æœºå·';
+COMMENT ON COLUMN success_killed.state IS 'çŠ¶æ€æ ‡ç¤ºï¼š-1æ— æ•ˆ 0ï¼šæˆåŠŸ 1ï¼šå·²ä»˜æ¬¾ 2ï¼šå·²å‘è´§';
+COMMENT ON COLUMN success_killed.create_time IS 'åˆ›å»ºæ—¶é—´';
 
---´´½¨Ë÷Òı
+--åˆ›å»ºç´¢å¼•
 create index idx_create_time on success_killed(create_time);

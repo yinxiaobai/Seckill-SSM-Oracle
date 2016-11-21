@@ -8,8 +8,7 @@
 	<servlet>
 		<servlet-name>seckiill-dispathcer</servlet-name>
 		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
-		<!-- 配置springMVC需要加载的配置文件
-			spring-dao.xml,spring-servicce.xml,spring-web.xml
+		<!-- 配置springMVC需要加载的配置文件 spring-dao.xml,spring-servicce.xml,spring-web.xml 
 			Mybatie -> spring -> springbMVC -->
 		<init-param>
 			<param-name>contextConfigLocation</param-name>
