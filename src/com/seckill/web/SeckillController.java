@@ -65,7 +65,7 @@ public class SeckillController {
 	// ajax json
 	@RequestMapping(value = "/{seckillId}/exposer", method = RequestMethod.POST, produces = { "application/json;charset=utf-8" })
 	@ResponseBody
-	public SeckillResult<Exposer> exposer(Long seckillId) {
+	public SeckillResult<Exposer> exposer(@PathVariable(value="seckillId") Long seckillId) {
 		SeckillResult<Exposer> result;
 		try {
 			Exposer exposer = seckillService.exportSeckillUrl(seckillId);
@@ -79,7 +79,7 @@ public class SeckillController {
 
 	@RequestMapping(value = "{seckillId}/{md5}/execution", method = RequestMethod.POST, produces = { "application/json;charset=utf-8" })
 	@ResponseBody
-	public SeckillResult<SeckillExecution> exectue(Long seckillId,
+	public SeckillResult<SeckillExecution> exectue(@PathVariable("seckillId")Long seckillId,
 			@PathVariable("md5") String md5,
 			@CookieValue(value = "killPhone", required = false) Long phone) {
 		// springmvc valid 验证
@@ -92,14 +92,14 @@ public class SeckillController {
 			return new SeckillResult<SeckillExecution>(true, execution);
 		} catch (RepeatKillException e) {
 			SeckillExecution execution = new SeckillExecution(seckillId, SeckillStatEnum.REPEAT_KILL);
-			return new SeckillResult<SeckillExecution>(false, execution);
+			return new SeckillResult<SeckillExecution>(true, execution);
 		} catch (SeckillCloseException e) {
 			SeckillExecution execution = new SeckillExecution(seckillId, SeckillStatEnum.END);
-			return new SeckillResult<SeckillExecution>(false, execution);
+			return new SeckillResult<SeckillExecution>(true, execution);
 		} catch (Exception e) {
 			log.error(e.getMessage(), e);
 			SeckillExecution execution = new SeckillExecution(seckillId, SeckillStatEnum.INNER_ERROR);
-			return new SeckillResult<SeckillExecution>(false, execution);
+			return new SeckillResult<SeckillExecution>(true, execution);
 		}
 	}
 	

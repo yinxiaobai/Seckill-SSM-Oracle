@@ -22,7 +22,7 @@
 	<select id="queryById" resultType="Seckill" parameterType="long">
 		select seckill_id,name,num,start_time,end_time,create_time
 		from seckill
-		where seckill_id = #{seckillId}		<!-- 结尾千万不要加分号（;） ！！！(视频上有加，不要问我为什么，已吐血) -->
+		where seckill_id = #{seckillId}		<!-- 结尾千万不要加分号（;） ！！！(已吐血) -->
 	</select>
 
 	<select id="queryAll" resultType="Seckill">
