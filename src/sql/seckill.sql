@@ -48,9 +48,9 @@ insert into seckill
 --提交数据
 commit
 /*
-  因oracle数据库直接查询timestamp格式时显示为西方日期格式，不符合常用习惯，查询时可通过to_char转换
+  因oracle数据库直接查询timestamp格式时显示为西方日期格式，不符合常用习惯，强迫症患者(譬如我)可在查询时通过to_char转换。
   网上有教程通过在oracle的注册表中添加 NLS_TIMESTAMP_FORMAT = YYYY-MM-DD HH24:MI:SS:FF6 
-  字符串本人脸黑，未成功-.-,有兴趣自行百度，成功了请传授我下经验
+  字符串彻底解决这个问题，本人脸黑，未成功-.-,有兴趣自行百度，成功了请传授我下经验
 */
 select to_char(start_time,'yyyy-mm-dd hh24:mi:ss:ff6'),
        to_char(end_time,'yyyy-mm-dd hh24:mi:ss:ff6'),
