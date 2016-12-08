@@ -67,6 +67,11 @@ public class SeckillServiceImpl implements SeckillService {
 	 */
 	@Override
 	public Exposer exportSeckillUrl(long seckillId) {
+		// 优化点：缓存优化
+		/*
+		 * get from cache if null get db else put cache locgoin
+		 */
+
 		Seckill seckill = seckillDao.queryById(seckillId);
 		if (seckill == null) {
 			return new Exposer(false, seckillId);
@@ -78,10 +83,6 @@ public class SeckillServiceImpl implements SeckillService {
 
 		if (nowTime.getTime() < startTime.getTime()
 				|| nowTime.getTime() > endTime.getTime()) {
-			/*
-			 * if (1478275920123L < startTime.getTime() || 1478275920123L >
-			 * endTime.getTime()) {
-			 */
 			return new Exposer(false, seckillId, nowTime.getTime(),
 					startTime.getTime(), endTime.getTime());
 		}
@@ -116,8 +117,7 @@ public class SeckillServiceImpl implements SeckillService {
 	@Override
 	@Transactional
 	/*
-	 * 使用注解控制事务方法的优点： 
-	 * 1：开发团队达成一致约定，明确标明事务方法的变成风格
+	 * 使用注解控制事务方法的优点： 1：开发团队达成一致约定，明确标明事务方法的变成风格
 	 * 2：保证事务方法的执行时间尽可能短,不要穿插其他的网络操作,RPC/HTTP请求或者剥离到事务方法外部
 	 * 3:不是所有的方法都需要事务,如只有一条修改操作、只读操作不需要事务控制
 	 */
@@ -132,21 +132,37 @@ public class SeckillServiceImpl implements SeckillService {
 		Date nowTime = new Date();
 
 		try {
-			// 减库存
-			int updateCount = seckillDao.reduceNum(seckillId, nowTime);
-			if (updateCount <= 0) {
-				// 没有更新到记录，秒杀结束
-				throw new SeckillCloseException(
-						"###########seckill is closed###########");
+			/*
+			 * // 记录购买行为 int insertCount =
+			 * successKilledDao.insertSuccessKilled(seckillId, userPhone); //
+			 * 唯一seckillId,userPhone if (insertCount <= 0) { // 重复秒杀 throw new
+			 * RepeatKillException( "###########seckill repeated###########"); }
+			 * else { // 减库存 int updateCount = seckillDao.reduceNum(seckillId,
+			 * nowTime); if (updateCount <= 0) { // 没有更新到记录，秒杀结束 throw new
+			 * SeckillCloseException(
+			 * "###########seckill is closed###########"); } else { // 秒杀成功
+			 * SuccessKilled successKilled = successKilledDao
+			 * .queryByIdWithSeckill(seckillId, userPhone); return new
+			 * SeckillExecution(seckillId, SeckillStatEnum.SUCCESS,
+			 * successKilled); } }
+			 */
+
+			// 记录购买行为
+			int insertCount = successKilledDao.insertSuccessKilled(seckillId,
+					userPhone);
+			// 唯一seckillId,userPhone
+			if (insertCount <= 0) {
+				// 重复秒杀
+				throw new RepeatKillException(
+						"###########seckill repeated###########");
 			} else {
-				// 记录购买行为
-				int insertCount = successKilledDao.insertSuccessKilled(
-						seckillId, userPhone);
-				// 唯一seckillId,userPhone
-				if (insertCount <= 0) {
-					// 重复秒杀
-					throw new RepeatKillException(
-							"###########seckill repeated###########");
+				// 减库存 热点商品竞争
+				// 减少update行级锁时间
+				int updateCount = seckillDao.reduceNum(seckillId, nowTime);
+				if (updateCount <= 0) {
+					// 没有更新到记录，秒杀结束
+					throw new SeckillCloseException(
+							"###########seckill is closed###########");
 				} else {
 					// 秒杀成功
 					SuccessKilled successKilled = successKilledDao
