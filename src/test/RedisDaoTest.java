@@ -1,7 +1,5 @@
 package test;
 
-import static org.junit.Assert.fail;
-
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +19,7 @@ import com.seckill.entity.Seckill;
 @ContextConfiguration({"classpath:spring/spring-dao.xml","classpath:spring/spring-service.xml"})
 public class RedisDaoTest {
 	
-	private long seckillId = 3;
+	private long seckillId = 2;
 	
 	@Autowired
 	private RedisDao redisDao;
@@ -41,9 +39,12 @@ public class RedisDaoTest {
 			if(seckill != null){
 				String result = redisDao.putSeckill(seckill);
 				System.out.println(result);
+				System.out.println("result:"+result);
 				seckill = redisDao.getSeckill(seckillId);
-				System.out.println(seckill);
+				System.out.println("seckill:"+seckill);
 			}
+		}else{
+			System.out.println("【从redis中获取成功】");
 		}
 	}
 }

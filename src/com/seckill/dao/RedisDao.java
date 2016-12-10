@@ -28,6 +28,13 @@ public class RedisDao {
 	private RuntimeSchema<Seckill> schema = RuntimeSchema
 			.createFrom(Seckill.class);
 
+	/**
+	 * 从Redis中获取seckill
+	 * @author xiaobai
+	 * @date 2016年12月10日下午11:11:41
+	 * @param seckillId
+	 * @return
+	 */
 	public Seckill getSeckill(long seckillId) {
 
 		// redis操作逻辑
@@ -42,10 +49,19 @@ public class RedisDao {
 				// protostuff : pojo
 				byte[] bytes = jedis.get(key.getBytes());
 				if (bytes != null) {
+					/*//实现Serializable接口，序列化反序列化
+					@SuppressWarnings("resource")
+					ObjectInputStream inputStream = new ObjectInputStream(new FileInputStream("a.txt"));
+					Object object = inputStream.readObject();
+					if(object instanceof Seckill){
+						Seckill seckill = (Seckill) object;
+						return seckill;
+					}*/
+					
 					// 获得一个空对象
+					//seckill反序列化
 					Seckill seckill = schema.newMessage();
 					ProtostuffIOUtil.mergeFrom(bytes, seckill, schema);
-					// seckill反序列化
 					return seckill;
 				}
 			} finally {
@@ -57,6 +73,13 @@ public class RedisDao {
 		return null;
 	}
 
+	/**
+	 * 将seckill存入Redis缓存中
+	 * @author xiaobai
+	 * @date 2016年12月10日下午11:12:08
+	 * @param seckill
+	 * @return
+	 */
 	public String putSeckill(Seckill seckill) {
 		// set Object(Seckill) -> 序列化 -> byte[]
 		try {
@@ -66,6 +89,12 @@ public class RedisDao {
 				byte[] bytes = ProtostuffIOUtil
 						.toByteArray(seckill, schema, LinkedBuffer
 								.allocate(LinkedBuffer.DEFAULT_BUFFER_SIZE));
+				/*//实现Serializable接口，序列化反序列化
+				@SuppressWarnings("resource")
+				ObjectOutputStream stream = new ObjectOutputStream(new FileOutputStream("a.txt"));
+				seckill.setNum(33);
+				stream.writeObject(seckill);
+				byte[] bytes = stream.toString().getBytes();*/
 				// 超时缓存
 				int timeout = 60 * 60;
 				String result = jedis.setex(key.getBytes(), timeout, bytes);
@@ -73,11 +102,9 @@ public class RedisDao {
 			} catch (Exception e) {
 				jedis.close();
 			}
-
 		} catch (Exception e) {
 			log.error(e.getMessage(), e);
 		}
-
 		return null;
 	}
 }

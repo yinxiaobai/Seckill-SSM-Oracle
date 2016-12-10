@@ -6,8 +6,15 @@ import java.util.Date;
  * @author xiaobai
  * @date 2016年11月5日下午6:21:24
  */
-public class Seckill {
+public class Seckill/* implements Serializable*/{
 	
+	/**
+	 * 通过实现Serializable接口，必须增加显式版本号
+	 * 否则若反序列化之前改变了类，jvm将回重新生成另一个隐式版本号
+	 * 2016年12月10日下午9:29:25
+	 */
+//	private static final long serialVersionUID = 1L;
+
 	private long seckillId;
 	
 	private String name;
