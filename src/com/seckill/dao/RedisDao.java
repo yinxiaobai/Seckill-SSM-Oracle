@@ -36,7 +36,7 @@ public class RedisDao {
 	 * @return
 	 */
 	public Seckill getSeckill(long seckillId) {
-
+		
 		// redis操作逻辑
 		try {
 			Jedis jedis = jedisPool.getResource();
@@ -76,11 +76,13 @@ public class RedisDao {
 	/**
 	 * 将seckill存入Redis缓存中
 	 * @author xiaobai
+	 * @param <T>
 	 * @date 2016年12月10日下午11:12:08
 	 * @param seckill
 	 * @return
 	 */
-	public String putSeckill(Seckill seckill) {
+	public <T> String putSeckill(Seckill seckill) {
+		
 		// set Object(Seckill) -> 序列化 -> byte[]
 		try {
 			Jedis jedis = jedisPool.getResource();

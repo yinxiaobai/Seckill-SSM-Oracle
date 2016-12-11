@@ -6,8 +6,7 @@
 <mapper namespace="com.seckill.dao.SuccessKilledDao">
 	<!-- oracle中忽略主键冲突操作 -->
 	<insert id="insertSuccessKilled">
-		insert /*+
-		IGNORE_ROW_ON_DUPKEY_INDEX(success_killed(seckill_id,user_phone)) */
+		insert /*+ IGNORE_ROW_ON_DUPKEY_INDEX(success_killed(seckill_id,user_phone)) */
 		into
 		success_killed (seckill_id,user_phone,state)
 		values(#{seckillId},#{userPhone},0)
