@@ -1,12 +1,19 @@
 -- 秒杀执行存储过程
---DELIMITER $$ -- console ; 转换为 $$
 -- 定义存储过程
 -- 参数 ： in 输入参数; out 输出参数
 -- sql%rowcount : 返回上一条修改类型sql(delete,update,insert)的影响行数
 -- insert_count : 0:未修改数据;  >0 : 表示修改的行数;  <0 : sql错误/未执行修改sql 
-create procedure seckill.execute_seckill
+-- 每一句均应以;结尾
+-- 注意：oracle中的if else写法为
+/*
+  if ... then
+  elsif ... then           注意不要写成elseif
+  else
+  end if;
+*/
+create or replace procedure seckill.execute_seckill
 	(v_seckill_id in number,v_phone in number,
-		v_kill_time in timestaemp, r_result out number)
+		v_kill_time in timestamp, r_result out number)
 as
 	--定义一个变量insert_count
 	insert_count number;
@@ -16,13 +23,13 @@ begin
 		(seckill_id,user_phone,create_time)
 		values (v_seckill_id,v_phone,v_kill_time);
 	
-	insert_count := sql%rowcount
-	if(insert_count = 0) then
+	insert_count := sql%rowcount;
+	if insert_count = 0 then
 		rollback;
-		set r_result = -1;
-	elseif(insert_count < 0) then
+		r_result := -1;
+	elsif insert_count < 0 then
 		rollback;
-		set r_result = -2;
+		r_result := -2;
 	else 
 		update seckill 
 		set num = num - 1
@@ -31,15 +38,15 @@ begin
 			and start_time < v_kill_time
 			and num > 0;
 		insert_count := sql%rowcount;
-		if(insert_count = 0) then
+		if insert_count = 0 then
 			rollback;
-			set r_result = 0;
-		elseif (insert_count < 0) then 
+			r_result := 0;
+		elsif insert_count < 0 then 
 			rollback;
-			set r_result = -2;
+			r_result := -2;
 		else
 			commit;
-			set r_result = 1;
+			r_result := 1;
 		end if;
 	end if;
 end;

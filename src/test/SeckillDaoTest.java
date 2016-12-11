@@ -1,10 +1,13 @@
 package test;
 
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 
+import org.apache.commons.collections.MapUtils;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
@@ -52,5 +55,24 @@ public class SeckillDaoTest {
 		Date date = new Date();
 		int i = seckilldao.reduceNum(2, date);
 		System.out.println("updateCount:"+i);
+	}
+	
+	@SuppressWarnings({ "rawtypes", "unchecked" })
+	@Test
+	public void killByProcedure(){
+		Date killTime = new Date();
+		Map map = new HashMap<>();
+		map.put("seckill", 2);
+		map.put("phone", "13333333333");
+		map.put("killTime", killTime);
+		System.out.println(killTime);
+		try {
+			seckilldao.killByProcedure(map);
+			int result = MapUtils.getInteger(map, "result", -2);
+			System.out.println(result);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 }

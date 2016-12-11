@@ -107,4 +107,16 @@ public class SeckillServiceTest {
 		//successKilled=SuccessKilled 
 		//[seckillId=2, userPhone=13230941232, state=0, createTime=Sun Nov 06 22:51:33 CST 2016, seckill=SecKill [seckillId=0, name=500元秒杀ipad2, num=193, startTime=Sat Nov 05 00:12:00 CST 2016, endTime=Mon Nov 07 00:12:00 CST 2016, createTime=Sat Nov 05 17:59:47 CST 2016]]]
 	}*/
+	
+	@Test
+	public void executeSeckillProceduce(){
+		long seckillId = 2;
+		long phone = 13333333333L;
+		Exposer exposer = seckillService.exportSeckillUrl(seckillId);
+		if(exposer.isExposed()){
+			String md5 = exposer.getMd5();
+			SeckillExecution execution = seckillService.executeSeckillProceduce(seckillId, phone, md5);
+			log.info(execution.getStateInfo());
+		}
+	}
 }

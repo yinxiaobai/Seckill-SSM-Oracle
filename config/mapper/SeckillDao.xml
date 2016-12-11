@@ -34,4 +34,14 @@
 		order by create_time desc)
 		)where n &gt;= #{start} and n &lt;= #{end}
 	</select>
+	
+	<!-- mybatis调用存储过程 -->
+	<select id="killByProcedure" statementType="CALLABLE">
+		call execute_seckill(
+			#{seckillId,jdbcType=BIGINT,mode = in},
+			#{phone,jdbcType=BIGINT,mode = in},
+			#{killTime,jdbcType=TIMESTAMP,mode = in},
+			#{seckillId,jdbcType=INTEGER,mode = OUT},
+		)
+	</select>
 </mapper>
