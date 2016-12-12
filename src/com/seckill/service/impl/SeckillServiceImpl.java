@@ -186,6 +186,7 @@ public class SeckillServiceImpl implements SeckillService {
 			return new SeckillExecution(seckillId, SeckillStatEnum.DATA_REWRITE);
 		}
 		Date killTime = new Date();
+		//Timestamp killTime = new Timestamp(new Date().getTime());
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("seckillId", seckillId);
 		map.put("phone", userPhone);
