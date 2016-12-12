@@ -36,13 +36,14 @@
 	</select>
 	
 	<!-- mybatis调用存储过程 -->
-	<!-- 注意：IN,OUT 需大写 -->
+	<!-- 注意：IN,OUT 需大写 
+	result 中的 indbType必须写-->
 	<select id="killByProcedure" statementType="CALLABLE" parameterType="java.util.Map">
 		call execute_seckill(
 			#{seckillId,jdbcType=BIGINT,mode = IN},
 			#{phone,jdbcType=BIGINT,mode = IN},
 			#{killTime,jdbcType=TIMESTAMP,mode = IN},
-			#{result,jdbcType=BIGINT,mode = OUT}
+			#{result,jdbcType=INTEGER,mode = OUT}
 		)
 	</select>
 </mapper>
