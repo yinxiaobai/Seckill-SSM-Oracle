@@ -6,8 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import com.seckill.dao.RedisDao;
 import com.seckill.dao.SeckillDao;
+import com.seckill.dao.cache.RedisDao;
 import com.seckill.entity.Seckill;
 
 /**
@@ -28,7 +28,7 @@ public class RedisDaoTest {
 	private SeckillDao seckillDao;
 	
 	/**
-	 * Test method for {@link com.seckill.dao.RedisDao#getSeckill(java.lang.Long)}.
+	 * Test method for {@link com.seckill.dao.cache.RedisDao#getSeckill(java.lang.Long)}.
 	 */
 	@Test
 	public void testSeckill() {

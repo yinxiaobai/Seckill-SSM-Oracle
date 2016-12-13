@@ -13,9 +13,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.DigestUtils;
 
-import com.seckill.dao.RedisDao;
 import com.seckill.dao.SeckillDao;
 import com.seckill.dao.SuccessKilledDao;
+import com.seckill.dao.cache.RedisDao;
 import com.seckill.dto.Exposer;
 import com.seckill.dto.SeckillExecution;
 import com.seckill.entity.Seckill;
