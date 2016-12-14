@@ -53,7 +53,7 @@
 	<!-- 趋势：约定大于配置 -->
 	
 	<!-- RedisDao -->
-	<bean id="redisDao" class="com.seckill.dao.RedisDao">
+	<bean id="redisDao" class="com.seckill.dao.cache.RedisDao">
 		<constructor-arg index="0" value="localhost" />
 		<constructor-arg index="1" value="6379" />
 	</bean>
