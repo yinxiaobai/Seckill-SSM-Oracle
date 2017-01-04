@@ -178,6 +178,7 @@ public class SeckillServiceImpl implements SeckillService {
 	}
 
 	/**
+	 * 调用存储过程执行秒杀操作
 	 * @date 2016年12月11日下午10:27:07
 	 */
 	@Override

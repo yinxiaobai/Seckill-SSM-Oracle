@@ -48,8 +48,7 @@ public class SeckillController {
 	}
 
 	@RequestMapping(value = "{seckillId}/detail", method = RequestMethod.GET)
-	public String detail(@PathVariable(value = "seckillId") Long seckillId,
-			Model model) {
+	public String detail(@PathVariable(value = "seckillId") Long seckillId, Model model) {
 		if (seckillId == null) {
 			return "redirect:/seckill/list";
 		}
@@ -63,9 +62,10 @@ public class SeckillController {
 	}
 
 	// ajax json
-	@RequestMapping(value = "/{seckillId}/exposer", method = RequestMethod.POST, produces = { "application/json;charset=utf-8" })
+	@RequestMapping(value = "/{seckillId}/exposer", method = RequestMethod.POST, produces = {
+			"application/json;charset=utf-8" })
 	@ResponseBody
-	public SeckillResult<Exposer> exposer(@PathVariable(value="seckillId") Long seckillId) {
+	public SeckillResult<Exposer> exposer(@PathVariable(value = "seckillId") Long seckillId) {
 		SeckillResult<Exposer> result;
 		try {
 			Exposer exposer = seckillService.exportSeckillUrl(seckillId);
@@ -77,18 +77,18 @@ public class SeckillController {
 		return result;
 	}
 
-	@RequestMapping(value = "{seckillId}/{md5}/execution", method = RequestMethod.POST, produces = { "application/json;charset=utf-8" })
+	@RequestMapping(value = "{seckillId}/{md5}/execution", method = RequestMethod.POST, produces = {
+			"application/json;charset=utf-8" })
 	@ResponseBody
-	public SeckillResult<SeckillExecution> exectue(@PathVariable("seckillId")Long seckillId,
-			@PathVariable("md5") String md5,
-			@CookieValue(value = "killPhone", required = false) Long phone) {
+	public SeckillResult<SeckillExecution> exectue(@PathVariable("seckillId") Long seckillId,
+			@PathVariable("md5") String md5, @CookieValue(value = "killPhone", required = false) Long phone) {
 		// springmvc valid 验证
 		if (phone == null) {
 			return new SeckillResult<SeckillExecution>(false, "未注册");
 		}
 
 		try {
-			SeckillExecution execution = seckillService.executeSeckill(seckillId, phone, md5);
+			SeckillExecution execution = seckillService.executeSeckillProceduce(seckillId, phone, md5);
 			return new SeckillResult<SeckillExecution>(true, execution);
 		} catch (RepeatKillException e) {
 			SeckillExecution execution = new SeckillExecution(seckillId, SeckillStatEnum.REPEAT_KILL);
@@ -102,10 +102,10 @@ public class SeckillController {
 			return new SeckillResult<SeckillExecution>(true, execution);
 		}
 	}
-	
-	@RequestMapping(value="/time/now",method=RequestMethod.GET)
+
+	@RequestMapping(value = "/time/now", method = RequestMethod.GET)
 	@ResponseBody
-	public SeckillResult<Long> time(){
+	public SeckillResult<Long> time() {
 		return new SeckillResult<Long>(true, new Date().getTime());
 	}
 }
